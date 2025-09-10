@@ -27,6 +27,10 @@ export default class HomePage {
         return this.page.getByRole('button', { name: 'Start Exploring' });
     }
 
+    public get Challenges() {
+        return this.page.getByRole('button', { name: 'Challenges' });
+    }
+
     public async clickFeatures() {
         await this.Features.click();
     }
@@ -45,6 +49,10 @@ export default class HomePage {
 
     public async clickStartExploring() {
         await this.StartExploring.click();
+    }
+
+    public async clickChallenges() {
+        await this.Challenges.click();
     }
 
 }
