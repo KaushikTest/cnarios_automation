@@ -18,3 +18,7 @@ Cnarios Automation is a TypeScript-based test automation project using Playwrigh
 - Use Playwright test runner for parallel execution, reporting, and debugging.
 
 This repository serves as both a practical learning tool and a reference for building reliable, scalable Playwright automation suites.
+
+### References:
+- https://playwright.dev/
+- https://playwright.dev/docs/intro
