@@ -1,11 +1,8 @@
-import { test as baseTest } from "@playwright/test";
-import * as HomePageCases from "../cases/homepage-cases";
+import { test as testWithExplore } from "../fixtures/explorepage-fixture";
 import * as ExplorePageCases from '../cases/explorepage-cases';
 
-export const test = baseTest.extend<{ conceptsHomePage: void }>({
-    conceptsHomePage: async ({ page }, use) => {
-        await page.goto("https://www.cnarios.com/");
-        await HomePageCases.clickStartExploringAtHomepage(page);
+export const test = testWithExplore.extend<{ conceptsHomePage: void }>({
+    conceptsHomePage: async ({ page, exploredHomepage }, use) => {
         await ExplorePageCases.clickConcepts(page);
         await use(undefined);
     },
