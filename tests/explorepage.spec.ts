@@ -1,6 +1,6 @@
 import { expect } from "@playwright/test";
 import * as ExplorePageCases from '../cases/explorepage-cases';
-import { test } from "../fixtures/homepage-fixture";
+import { test } from "../fixtures/explorepage-fixture";
 
 test.describe('ExplorePage Tests', async () => {
 
