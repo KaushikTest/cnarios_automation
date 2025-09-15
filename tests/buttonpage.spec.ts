@@ -52,4 +52,15 @@ test.describe('ButtonPage Tests', async () => {
         await expect(processing_element).toBeVisible({ timeout: 5000 });
         await expect(processing_element).toBeInViewport();
     })
+
+    test('Validate removal of a suggestion card', async ({ page, buttonPage }) => {
+        await ButtonPageCases.clickTryItYourself(page);
+        const cards_removeelement = page.locator(`//div[starts-with(@class, 'absolute right')]`);
+        const count = await cards_removeelement.count();
+        expect(cards_removeelement.nth(1)).toBeVisible({ timeout: 5000 });
+        expect(count).toBe(5);
+        await cards_removeelement.nth(1).click();
+        const updated_count = await cards_removeelement.count();
+        expect(updated_count).toBe(4);
+    })
 })
