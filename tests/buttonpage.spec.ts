@@ -63,4 +63,17 @@ test.describe('ButtonPage Tests', async () => {
         const updated_count = await cards_removeelement.count();
         expect(updated_count).toBe(4);
     })
+
+    test('Validate removal of all suggestion cards', async ({ page, buttonPage }) => {
+        await ButtonPageCases.clickTryItYourself(page);
+        const cards_removeelement = page.locator(`//div[starts-with(@class, 'absolute right')]`);
+        const count = await cards_removeelement.count();
+        expect(count).toBe(5);
+        while (await cards_removeelement.nth(0).isVisible()) {
+            await cards_removeelement.nth(0).click();
+        }
+        const updated_count = await cards_removeelement.count();
+        await expect(cards_removeelement.nth(1)).not.toBeVisible({ timeout: 5000 });
+        expect(updated_count).toBe(0);
+    })
 })
