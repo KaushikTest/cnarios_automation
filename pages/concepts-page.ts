@@ -2,7 +2,7 @@ import { Page } from "@playwright/test";
 
 export default class Concepts {
 
-    private page: Page;
+    private readonly page: Page;
 
     constructor(page: Page) {
         this.page = page;
