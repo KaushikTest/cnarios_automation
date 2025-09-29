@@ -1,8 +1,7 @@
 import { expect } from "@playwright/test";
 import * as FormPageCases from '../cases/buttonpage-cases';
-import { test } from "../fixtures/formpage-fixture";
-import { faker } from '@faker-js/faker';
 import { enterFormSubmit } from "../commons/helper";
+import { test } from "../fixtures/formpage-fixture";
 
 test.describe('FormPage Tests', async () => {
     test.describe.configure({ mode: "serial" });
