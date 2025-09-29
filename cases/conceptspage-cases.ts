@@ -11,7 +11,7 @@ export async function clickFormElement(page: Page) {
     return page;
 }
 
-export async function clickChechBoxInput(page: Page) {
+export async function clickCheckBoxInput(page: Page) {
     await new ConceptsPage(page).clickCheckBox();
     return page;
 }
