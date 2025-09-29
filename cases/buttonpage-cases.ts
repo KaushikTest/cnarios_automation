@@ -1,13 +1,13 @@
 import { Page } from "@playwright/test";
-import ButtonPage from "../pages/button-page";
+import ConceptFields from "../pages/button-page";
 
 export async function clickTryItYourself(page: Page) {
-    await new ButtonPage(page).clickTryItYourself();
+    await new ConceptFields(page).clickTryItYourself();
     return page;
 }
 
 export async function clickTestCases(page: Page) {
-    await new ButtonPage(page).clickTestCases();
+    await new ConceptFields(page).clickTestCases();
     return page;
 }
 
