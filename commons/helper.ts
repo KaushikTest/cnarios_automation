@@ -14,3 +14,9 @@ export async function enterFormSubmit(page: Page, event_type: string) {
     await page.getByText('Register').click({ timeout: 15000 });
     return { page, fullName, email, number };
 }
+
+export async function uncheckDefault(page: Page) {
+    await page.getByRole('button', { name: 'Set Preferences' }).click();
+    await page.getByRole('checkbox', { name: 'Technology' }).uncheck();
+    await page.getByRole('checkbox', { name: 'Sports' }).uncheck();
+}
