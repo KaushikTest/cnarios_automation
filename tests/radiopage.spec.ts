@@ -32,7 +32,17 @@ test.describe('Radio Tests', async () => {
 
     allCombinations.forEach((answers, index) => {
 
-        test(`Validate submission of options-> ${answers}`, async ({ page, radioPage }) => {
+        test(`Validate submission of options-> ${answers}`, async ({ page, radioPage }, testInfo) => {
+            // This matrix tests the SITE's grading logic (does 3-of-4 pass?),
+            // not browser rendering — that logic can't differ per browser, so
+            // running all 256 combinations x3 browsers is redundant work. Full
+            // matrix runs on chromium; other browsers get every 20th
+            // combination as a representative cross-browser smoke check.
+            test.skip(
+                testInfo.project.name !== 'chromium' && index % 20 !== 0,
+                'Full combination matrix runs on chromium only; other browsers get a representative sample.'
+            );
+
             // The live quiz grades on a 3-of-4 threshold, not an exact match —
             // confirmed by running the full combination matrix against the site.
             const matchCount = answers.filter((a, i) => a === correctAnswers[i]).length;
