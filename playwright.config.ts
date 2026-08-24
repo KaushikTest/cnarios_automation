@@ -59,15 +59,11 @@ export default defineConfig({
     //   use: { ...devices['iPhone 12'] },
     // },
 
-    // Test against branded browsers. 
-    {
-      name: 'Microsoft Edge',
-      use: { ...devices['Desktop Edge'], channel: 'msedge' },
-    },
-    {
-      name: 'Google Chrome',
-      use: { ...devices['Desktop Chrome'], channel: 'chrome' },
-    },
+    // Edge and Chrome are both Chromium under the hood — running the same
+    // suite against them plus 'chromium' triples runtime for no real extra
+    // engine coverage (webkit already covers Safari/WebKit, firefox covers
+    // Gecko). They also need an explicit `playwright install msedge chrome`
+    // that CI wasn't doing, so they were silently failing to launch there.
   ],
 
   /* Run your local dev server before starting the tests */
