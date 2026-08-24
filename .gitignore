@@ -1,0 +1,11 @@
+
+# Playwright
+node_modules/
+/test-results/
+/playwright-report/
+/blob-report/
+/playwright/.cache/
+tests-examples/
+
+# Scratch / unrelated practice code — not part of the cnarios test suite
+notes.ts

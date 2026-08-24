@@ -23,7 +23,7 @@ test.describe('ConceptsPage Tests', async () => {
     })
 
     test('Validate Navigation to Concepts Checkbox', async ({ page, conceptsHomePage }) => {
-        await ConceptsPageCases.clickChechBoxInput(page);
+        await ConceptsPageCases.clickCheckBoxInput(page);
         const element = page.getByRole('heading', { name: 'Checkbox' });
         await element.scrollIntoViewIfNeeded({ timeout: 5000 });
         expect(page.url()).toEqual('https://www.cnarios.com/concepts/checkbox');
@@ -198,7 +198,9 @@ test.describe('ConceptsPage Tests', async () => {
         const elements = page.locator("//div[starts-with(@class,'grid')]//a[starts-with(@href,'/concepts')]");
         await elements.first().waitFor({ state: "visible" });
         const count = await elements.count();
-        expect(count).toEqual(21);
+        // The site adds new concept cards over time (21 -> 23 observed), so
+        // assert a floor rather than an exact count that will keep going stale.
+        expect(count).toBeGreaterThanOrEqual(21);
     })
 
 })

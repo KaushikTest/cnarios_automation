@@ -3,7 +3,6 @@ import { expect } from "@playwright/test";
 import * as DropdownCases from '../cases/buttonpage-cases';
 import { test } from "../fixtures/dropdown-fixture";
 
-
 test.describe('Radio Tests', async () => {
 
     const country_currency = [['United States', 'USD'], ['India', 'INR'], ['Japan', 'JPY'], ['United Kingdom', 'GBP'], ['Canada', 'CAD'], ['Australia', 'AUD'], ['Germany', 'EUR'], ['France', 'EUR'], ['Italy', 'EUR'], ['Spain', 'EUR'], ['Brazil', 'BRL'], ['Russia', 'RUB'], ['China', 'CNY'], ['South Korea', 'KRW'], ['Mexico', 'MXN'], ['South Africa', 'ZAR'], ['New Zealand', 'NZD'], ['Switzerland', 'CHF'], ['Sweden', 'SEK'], ['Norway', 'NOK'], ['Denmark', 'DKK'], ['Saudi Arabia', 'SAR'], ['United Arab Emirates', 'AED'], ['Singapore', 'SGD'], ['Turkey', 'TRY'], ['Argentina', 'ARS'], ['Indonesia', 'IDR'], ['Thailand', 'THB'], ['Malaysia', 'MYR']];
