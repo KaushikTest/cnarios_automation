@@ -22,7 +22,17 @@ jobs:
     - name: Install Playwright Browser (${{ matrix.browser }})
       run: npx playwright install --with-deps ${{ matrix.browser }}
     - name: Run Playwright tests (${{ matrix.browser }})
-      run: npx playwright test --project=${{ matrix.browser }}
+      # The 256-case radio-quiz matrix only needs to run in full once (it's
+      # testing the site's grading logic, not per-browser rendering) — on
+      # non-chromium projects, --grep-invert excludes the @radio-matrix-only
+      # tagged cases so they're never collected there, leaving just the
+      # representative sample plus every other test at full coverage.
+      run: |
+        if [ "${{ matrix.browser }}" = "chromium" ]; then
+          npx playwright test --project=chromium
+        else
+          npx playwright test --project=${{ matrix.browser }} --grep-invert "@radio-matrix-only"
+        fi
       env:
         PLAYWRIGHT_HTML_REPORT: playwright-report/${{ matrix.browser }}
     - uses: actions/upload-artifact@v4
