@@ -31,19 +31,7 @@ test.describe('Radio Tests', async () => {
     })
 
     allCombinations.forEach((answers, index) => {
-        // This matrix tests the SITE's grading logic (does 3-of-4 pass?), not
-        // browser rendering — that logic can't differ per browser, so running
-        // all 256 combinations x3 browsers is redundant work. Every 20th
-        // combination is the representative sample; the rest are tagged
-        // @radio-matrix-only. CI runs the full matrix on chromium, and
-        // filters those tagged tests OUT on firefox/webkit via --grep-invert
-        // — so they're never even collected there, not run-then-skipped.
-        const isSample = index % 20 === 0;
-        const title = isSample
-            ? `Validate submission of options-> ${answers}`
-            : `Validate submission of options-> ${answers} @radio-matrix-only`;
-
-        test(title, async ({ page, radioPage }) => {
+        test(`Validate submission of options-> ${answers}`, async ({ page, radioPage }) => {
             // The live quiz grades on a 3-of-4 threshold, not an exact match —
             // confirmed by running the full combination matrix against the site.
             const matchCount = answers.filter((a, i) => a === correctAnswers[i]).length;
