@@ -1,24 +1,29 @@
-# Cnarios Automation
-Cnarios Automation is a TypeScript-based test automation project using Playwright, focused on practicing end-to-end testing on the demo website cnarios.com. The project showcases automated interactions such as form submissions, UI validations, and navigation flows, leveraging Playwright’s cross-browser capabilities for reliable testing. Ideal for honing Playwright skills, this repository demonstrates practical test scripts and automation best practices on a live web application.
+# Cnarios Playwright automation
 
-## Getting Started
+TypeScript Playwright tests for the public practice site [cnarios.com](https://www.cnarios.com/).
+The suite covers navigation, forms, input widgets, and quiz behavior using
+page objects, fixtures, and data-driven cases.
 
-### Clone the repository:
-`git clone <your-repo-url>`  
-`cd <your-project-folder>`
+## Run locally
 
-### Install dependencies:
-- Install the dependencies using `npm install`
-- Install Playwright browswers and tools with `npx playwright install`
-- Configure envirnoment variables or test data as required.
+Requires a current Node.js release.
 
-### Runnings Tests:
-- Execute all tests across supported browsers with npx playwright test.
-- Run tests in headed mode to visualize browser interactions using npx playwright test --headed.
-- Use Playwright test runner for parallel execution, reporting, and debugging.
+```bash
+npm ci
+npx playwright install
+npm test
+```
 
-This repository serves as both a practical learning tool and a reference for building reliable, scalable Playwright automation suites.
+To run only the Chromium project used by CI:
 
-### References:
-- https://playwright.dev/
-- https://playwright.dev/docs/intro
+```bash
+npm run test:chromium
+```
+
+The configured projects are Chromium, Firefox, and WebKit. GitHub Actions runs
+Chromium on pushes and pull requests and uploads the HTML report. Tests use a
+third-party practice site, so a site change or outage can affect results; inspect
+the trace from a retry before changing an assertion.
+
+The most useful coverage is in `tests/` and the corresponding `cases/` files.
+The quiz input matrix caught behavior that a single happy-path check would miss.
